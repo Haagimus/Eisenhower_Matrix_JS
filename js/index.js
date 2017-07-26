@@ -33,7 +33,6 @@ function addTask() {
       break;
     }
   }
-  console.log(task, radioI, radioU);
   reset();
 }
 
