@@ -7,7 +7,6 @@ function setup() {
 
 function update() {
   var task = document.getElementById("task").value;
-  console.log(task);
   if (!task) {
     document.getElementById("submit").style.display = "none";
   } else {
@@ -20,17 +19,26 @@ function addTask() {
   var radioI = document.getElementsByName("importance");
   var radioU = document.getElementsByName("urgency");
 
-  for (var i = 0; i < radioI.length; i++) {
+  for (var i = 0; i < 2; i++) {
     if (radioI[i].checked) {
-      radioI = document.getElementById(radioI[i]).value;
+      // if (i = 0) {i = 1;} else {i = 2;};
+      radioI = document.getElementById("radio" + (i + 1)).value;
       break;
     }
   }
-  for (var i = 0; i < radioU.length; i++) {
+  for (var i = 0; i < 2; i++) {
     if (radioU[i].checked) {
-      radioU = document.getElementById(radioU[i]).value;
+      // if (i = 0) {i = 3;} else {i = 4;};
+      radioU = document.getElementById("radio" + (i + 3)).value;
       break;
     }
   }
-  console.log(summary, importance, urgency);
+  console.log(task, radioI, radioU);
+  reset();
+}
+
+function reset() {
+  document.getElementById("task").value = "";
+  document.getElementById("radio1").checked = true;
+  document.getElementById("radio3").checked = true;
 }
