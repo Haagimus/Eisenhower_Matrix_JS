@@ -65,6 +65,7 @@ li {
 button{
 	margin-top: 10px;
 	padding: 10px 15px;
+  width: 90px;
 	background: #4479BA;
 	color: #FFF;
 	-webkit-border-radius: 4px;
