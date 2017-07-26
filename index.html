@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html >
 <head>
@@ -56,3 +57,63 @@
   </div>
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>The Eisenhower Matrix (Method)</title>
+
+  <script src="js/index.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body onload="setup()">
+    <div class="taskinfo">
+      <h4>Create New Task</h4>
+      <div>
+        <input type="text" id="task" placeholder="Enter task summary here."/>
+      </div>
+      <div>
+        <input type="radio" id="radio1" name="importance" value="Important" checked>
+          <label for="radio1">Important</label>
+        <input type="radio" id="radio2" name="importance" value="Not Important">
+          <label for="radio2">Not Important</label>
+      </div>
+      <div>
+        <input type="radio" id="radio3" name="urgency" value="Urgent" checked>
+          <label for="radio3">Urgent</label>
+        <input type="radio" id="radio4" name="urgency" value="Not Urgent">
+          <label for="radio4">Not Urgent</label>
+      </div>
+      <div>
+        <button id="submit" value="Add Task" onclick="addTask()">Add Task</button>
+        <button id="reset" value="Reset" onclick="reset()">Reset</button>
+      </div>
+  </div>
+  <div class="taskGrid">
+    <div class="box" id="iu">
+      <!-- <ol> -->
+        <li>test item</li>
+      <!-- </ol> -->
+    </div>
+    <div class="box" id="nu">
+      <!-- <ol> -->
+        <li>test item</li>
+      <!-- </ol> -->
+    </div>
+    <div class="box" id="in">
+      <!-- <ol> -->
+        <li>test item</li>
+      <!-- </ol> -->
+    </div>
+    <div class="box" id="nn">
+      <!-- <ol> -->
+        <li>test item</li>
+      <!-- </ol> -->
+    </div>
+  </div>
+</body>
+</html>
+>>>>>>> origin/master
