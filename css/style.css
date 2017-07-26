@@ -2,10 +2,19 @@
 body {
   margin: 10px;
 }
-h4 { text-align: center; color: rgba(0,0,0,0.5); }
-h6 { background: #f77; margin: 0; text-align: center;
-		font-weight: bold;
-	height: 30px; line-height: 30px; }
+h4 {
+  text-align: center;
+  color: rgba(0,0,0,0.5);
+  font-size: 24px;
+  margin: 10px;
+}
+h6 { background: #f77;
+  margin: 0;
+  text-align: center;
+  font-weight: bold;
+	height: 30px;
+  line-height: 30px;
+}
 .box {
 	display: inline-block;
 	float: left;
