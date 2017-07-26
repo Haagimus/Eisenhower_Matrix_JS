@@ -16,19 +16,20 @@
         <input type="text" id="task" placeholder="Enter task summary here." onChange="update()"/>
       </div>
       <div onchange="update()">
-        <input type="radio" id="radio1" name="importance" value="1" checked>
+        <input type="radio" id="radio1" name="importance" value="Important" checked>
           <label for="radio1">Important</label>
-        <input type="radio" id="radio2" name="importance" value="0">
+        <input type="radio" id="radio2" name="importance" value="Not Important">
           <label for="radio2">Not Important</label>
       </div>
       <div onchange="update()">
-        <input type="radio" id="radio3" name="urgency" value="1" checked>
+        <input type="radio" id="radio3" name="urgency" value="Urgent" checked>
           <label for="radio3">Urgent</label>
-        <input type="radio" id="radio4" name="urgency" value="0">
+        <input type="radio" id="radio4" name="urgency" value="Not Urgent">
           <label for="radio4">Not Urgent</label>
       </div>
       <div>
         <button id="submit" value="Add Task" onclick="addTask()">Add Task</button>
+        <button id="reset" value="Reset" onclick="reset()">Reset</button>
       </div>
     </div>
 </body>
