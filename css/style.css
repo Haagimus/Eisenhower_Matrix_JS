@@ -1,39 +1,66 @@
 * { outline: none; }
-body {
-  margin: 10px;
-}
+
 h4 {
   text-align: center;
   color: rgba(0,0,0,0.5);
   font-size: 24px;
   margin: 10px;
 }
-h6 { background: #f77;
-  margin: 0;
-  text-align: center;
-  font-weight: bold;
-	height: 30px;
-  line-height: 30px;
-}
 .box {
 	display: inline-block;
-	float: left;
-	width: 50%;
+  width: 45%;
+  height:150px;
 	padding: 10px;
 	overflow: auto;
 }
-#iu { background: #afa; }
-#nu { background: #aaf; }
-#in { background: #ffa; }
-#nn { background: #fff; }
-ul { padding-top: 15px; }
+#iu {
+  background-image: -moz-linear-gradient(top,#FFE4E4,#FFA3A2);
+  background-image: -webkit-gradient(linear,0 0,0 100%,from(#FFE4E4),to(#FFA3A2));
+  background-image: -webkit-linear-gradient(top,#FFE4E4,#FFA3A2);
+  background-image: -o-linear-gradient(top,#FFE4E4,#FFA3A2);
+  background-image: linear-gradient(to bottom,#FFE4E4,#FFA3A2);
+  border: solid 2px #BE4B48;
+  text-align: left;
+}
+#nu {
+  background-image: -moz-linear-gradient(top,#E4EEFF,#A4C4FF);
+  background-image: -webkit-gradient(linear,0 0,0 100%,from(#E4EEFF),to(#A4C4FF));
+  background-image: -webkit-linear-gradient(top,#E4EEFF,#A4C4FF);
+  background-image: -o-linear-gradient(top,#E4EEFF,#A4C4FF);
+  background-image: linear-gradient(to bottom,#E4EEFF,#A4C4FF);
+  border: solid 2px #4A7EBB;
+  text-align: left;
+}
+#in {
+  background-image: -moz-linear-gradient(top,#F5FFE6,#DAFDA8);
+  background-image: -webkit-gradient(linear,0 0,0 100%,from(#F5FFE6),to(#DAFDA8));
+  background-image: -webkit-linear-gradient(top,#F5FFE6,#DAFDA8);
+  background-image: -o-linear-gradient(top,#F5FFE6,#DAFDA8);
+  background-image: linear-gradient(to bottom,#F5FFE6,#DAFDA8);
+  border: solid 2px #98B954;
+  text-align: left;
+}
+#nn {
+  background-image: -moz-linear-gradient(top,#EDEDED,#BDBDBD);
+  background-image: -webkit-gradient(linear,0 0,0 100%,from(#EDEDED),to(#BDBDBD));
+  background-image: -webkit-linear-gradient(top,#EDEDED,#BDBDBD);
+  background-image: -o-linear-gradient(top,#EDEDED,#BDBDBD);
+  background-image: linear-gradient(to bottom,#EDEDED,#BDBDBD);
+  border: solid 2px #000;
+  text-align: left;
+}
 li {
-	list-style-type: none;
+  list-style-type: none;
 }
 .taskinfo {
 	margin: auto;
 	text-align: center;
 	width: 350px;
+}
+.taskGrid {
+	margin: 10px;
+	text-align: center;
+	/*width: 350px;*/
 }
 button{
 	margin-top: 10px;
