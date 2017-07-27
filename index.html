@@ -1,58 +1,71 @@
 <!DOCTYPE html>
-<html >
+<html>
+
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>The Eisenhower Matrix (Method)</title>
 
   <script src="js/index.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="css/style.css">
 
 </head>
 
 <body onload="setup()">
-    <div class="taskinfo">
-      <h4>Create New Task</h4>
-      <div>
-        <input type="text" id="task" placeholder="Enter task summary here."/>
-      </div>
-      <div>
-        <input type="radio" id="radio1" name="importance" value="Important" checked>
-          <label for="radio1">Important</label>
-        <input type="radio" id="radio2" name="importance" value="Not Important">
-          <label for="radio2">Not Important</label>
-      </div>
-      <div>
-        <input type="radio" id="radio3" name="urgency" value="Urgent" checked>
-          <label for="radio3">Urgent</label>
-        <input type="radio" id="radio4" name="urgency" value="Not Urgent">
-          <label for="radio4">Not Urgent</label>
-      </div>
-      <div>
-        <button id="submit" value="Add Task" onclick="addTask()">Add Task</button>
-        <button id="reset" value="Reset" onclick="reset()">Reset</button>
-      </div>
+  <div class="taskinfo">
+    <h4>Create New Task</h4>
+    <div>
+      <input type="text" id="task" placeholder="Enter task summary here." />
+    </div>
+    <div>
+      <input type="radio" id="radio1" name="importance" value="Important" checked>
+      <label for="radio1">Important</label>
+      <input type="radio" id="radio2" name="importance" value="Not Important">
+      <label for="radio2">Not Important</label>
+    </div>
+    <div>
+      <input type="radio" id="radio3" name="urgency" value="Urgent" checked>
+      <label for="radio3">Urgent</label>
+      <input type="radio" id="radio4" name="urgency" value="Not Urgent">
+      <label for="radio4">Not Urgent</label>
+    </div>
+    <div>
+      <button id="submit" value="Add Task" onclick="addTask()">Add Task</button>
+      <button id="reset" value="Reset" onclick="reset()">Reset</button>
+    </div>
   </div>
-  <div class="taskGrid">
-    <div class="box" id="iu">
-      <!-- <ol> -->
-        <li>test item</li>
-      <!-- </ol> -->
+
+  <div class="container-fluid">
+    <div class="row">
+      <h3 class="col-sm-5" id="toplabel">Important</h3>
+      <h3 class="col-sm-6" id="toplabel">Not Important</h3>
     </div>
-    <div class="box" id="nu">
-      <!-- <ol> -->
-        <li>test item</li>
-      <!-- </ol> -->
+    <div class="row">
+      <h3 id="sidelabel">Urgent</h3>
+      <div class="box" id="iu">
+        <li>Do First: Low effort - High Gain</li>
+      </div>
+
+      <div class="box" id="nu">
+        <li>Plan: High effort - High gain</li>
+      </div>
     </div>
-    <div class="box" id="in">
-      <!-- <ol> -->
-        <li>test item</li>
-      <!-- </ol> -->
+
+    <div class="row">
+      <h3 class="col-sm-2" id="sidelabel">Not Urgent</h3>
+      <div class="col-sm-5 box" id="in">
+        <li>Delegate: Low effort - Low gain</li>
+      </div>
+
+      <div class="col-sm-5 box" id="nn">
+        <li>Discard: High effort - Low gain</li>
+      </div>
     </div>
-    <div class="box" id="nn">
-      <!-- <ol> -->
-        <li>test item</li>
-      <!-- </ol> -->
-    </div>
+
   </div>
 </body>
+
 </html>

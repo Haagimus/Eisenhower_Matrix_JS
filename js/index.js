@@ -25,11 +25,21 @@ function addTask() {
 
   switch (true) {
     case radioI == "Important" && radioU == "Urgent":
-    grid = "iu";
-    console.log(grid);
+      grid = "iu";
+      console.log(grid);
       break;
-    // default:
-
+    case radioI == "Not Important" && radioU == "Urgent":
+      grid = "nu";
+      console.log(grid);
+      break;
+    case radioI == "Important" && radioU == "Not Urgent":
+      grid = "in";
+      console.log(grid);
+      break;
+    case radioI == "Not Important" && radioU == "Not Urgent":
+      grid = "nn";
+      console.log(grid);
+      break;
   }
 
   // var entry = document.createElement("li");
