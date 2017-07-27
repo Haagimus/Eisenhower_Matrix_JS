@@ -8,63 +8,61 @@
   <title>The Eisenhower Matrix (Method)</title>
 
   <script src="js/index.js"></script>
-  <script src="js/bootstrap.js"></script>
+  <!-- <script src="js/bootstrap.js"></script> -->
   <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="css/style.css">
 
 </head>
 
 <body onload="setup()">
-  <div class="taskinfo">
-    <h4>Create New Task</h4>
-    <div>
-      <input type="text" id="task" placeholder="Enter task summary here." />
+  <form class="form-inline">
+    <div class="form-group">
+      <!-- <label for="taskSummary">Create new task</label> -->
+      <input type="text" class="form-control" id="task" placeholder="Task summary">
     </div>
-    <div>
-      <input type="radio" id="radio1" name="importance" value="Important" checked>
-      <label for="radio1">Important</label>
-      <input type="radio" id="radio2" name="importance" value="Not Important">
-      <label for="radio2">Not Important</label>
+    <div class="form-group">
+      <input type="button" class="btn btn-info" id="importance" value="Important" onclick="updateI()">
     </div>
-    <div>
-      <input type="radio" id="radio3" name="urgency" value="Urgent" checked>
-      <label for="radio3">Urgent</label>
-      <input type="radio" id="radio4" name="urgency" value="Not Urgent">
-      <label for="radio4">Not Urgent</label>
+    <div class="form-group">
+      <input type="button" class="btn btn-info" id="urgency" value="Urgent" onclick="updateU()">
     </div>
-    <div>
-      <button id="submit" value="Add Task" onclick="addTask()">Add Task</button>
-      <button id="reset" value="Reset" onclick="reset()">Reset</button>
+    <div class="form-group">
+      <input type="button" class="btn btn-success" id="submit" value="Submit" onclick="addTask()">
     </div>
-  </div>
+    <div class="form-group">
+      <input type="button" class="btn btn-danger" id="reset" value="Reset" onclick="resetForm()">
+    </div>
+  </form>
 
   <div class="container-fluid">
-    <div class="row">
-      <h3 class="col-sm-5" id="toplabel">Important</h3>
-      <h3 class="col-sm-6" id="toplabel">Not Important</h3>
-    </div>
-    <div class="row">
-      <h3 id="sidelabel">Urgent</h3>
-      <div class="box" id="iu">
-        <li>Do First: Low effort - High Gain</li>
-      </div>
-
-      <div class="box" id="nu">
-        <li>Plan: High effort - High gain</li>
-      </div>
-    </div>
 
     <div class="row">
-      <h3 class="col-sm-2" id="sidelabel">Not Urgent</h3>
-      <div class="col-sm-5 box" id="in">
-        <li>Delegate: Low effort - Low gain</li>
+      <!-- Important and Urgent -->
+      <div class="col-xs-6 half-container" id="iu">
+        <h4 class="col-xs-12 text-center">Important/Urgent</h4>
+        <h5 class="col-xs-12 text-center">Do First: Low effort - High Gain</h5>
       </div>
 
-      <div class="col-sm-5 box" id="nn">
-        <li>Discard: High effort - Low gain</li>
+      <!-- Important and Not Urgent -->
+      <div class="col-xs-6 half-container" id="in">
+          <h4 class="col-xs-12 text-center">Important/Not Urgent</h4>
+          <h5 class="col-xs-12 text-center">Plan: High effort - High gain</h5>
       </div>
     </div>
 
+    <div class="row">
+      <!-- Not Important and Urgent -->
+      <div class="col-xs-6 half-container" id="nu">
+        <h4 class="col-xs-12 text-center">Not Important/Urgent</h4>
+        <h5 class="col-xs-12 text-center">Delegate: Low effort - Low gain</h5>
+      </div>
+
+      <!-- Not Important and Not Urgent -->
+      <div class="col-xs-6 half-container" id="nn">
+        <h4 class="col-xs-12 text-center">Not Important/Not Urgent</h4>
+        <h5 class="col-xs-12 text-center">Discard: High effort - Low gain</h5>
+      </div>
+    </div>
   </div>
 </body>
 
