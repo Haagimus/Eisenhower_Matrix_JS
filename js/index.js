@@ -1,56 +1,63 @@
 function setup() {
-  document.getElementById("task").value = "";
-  document.getElementById("radio1").checked = true;
-  document.getElementById("radio3").checked = true;
+  resetForm();
+}
+
+function updateI() {
+  var i = document.getElementById("importance");
+
+  if (i.value == "Important") {
+    i.value = "Not Important";
+  } else {
+    i.value = "Important";
+  }
+}
+
+function updateU() {
+  var i = document.getElementById("urgency");
+
+  if (i.value == "Urgent") {
+    i.value = "Not Urgent";
+  } else {
+    i.value = "Urgent";
+  }
 }
 
 function addTask() {
   var task = document.getElementById("task").value;
-  var radioI = document.getElementsByName("importance");
-  var radioU = document.getElementsByName("urgency");
+  var radioI = document.getElementById("importance").value;
+  var radioU = document.getElementById("urgency").value;
   var grid;
 
-  for (var i = 0; i < 2; i++) {
-    if (radioI[i].checked) {
-      radioI = document.getElementById("radio" + (i + 1)).value;
-      break;
+  if (!task) {
+    alert("A task summary is required to \r\nadd a new task to the matrix.");
+  } else {
+    switch (true) {
+      case radioI == "Important" && radioU == "Urgent":
+        grid = "iu";
+        // console.log(task, radioI, radioU);
+        break;
+      case radioI == "Not Important" && radioU == "Urgent":
+        grid = "nu";
+        // console.log(task, radioI, radioU);
+        break;
+      case radioI == "Important" && radioU == "Not Urgent":
+        grid = "in";
+        // console.log(task, radioI, radioU);
+        break;
+      case radioI == "Not Important" && radioU == "Not Urgent":
+        grid = "nn";
+        // console.log(task, radioI, radioU);
+        break;
+
+      resetForm();
+      // var entry = document.createElement("li");
+      // entry.appendChild(document.createTextNode(task));
     }
   }
-  for (var i = 0; i < 2; i++) {
-    if (radioU[i].checked) {
-      radioU = document.getElementById("radio" + (i + 3)).value;
-      break;
-    }
-  }
-
-  switch (true) {
-    case radioI == "Important" && radioU == "Urgent":
-      grid = "iu";
-      console.log(grid);
-      break;
-    case radioI == "Not Important" && radioU == "Urgent":
-      grid = "nu";
-      console.log(grid);
-      break;
-    case radioI == "Important" && radioU == "Not Urgent":
-      grid = "in";
-      console.log(grid);
-      break;
-    case radioI == "Not Important" && radioU == "Not Urgent":
-      grid = "nn";
-      console.log(grid);
-      break;
-  }
-
-  // var entry = document.createElement("li");
-  // entry.appendChild(document.createTextNode(task));
-
-
-  reset();
 }
 
-function reset() {
+function resetForm() {
   document.getElementById("task").value = "";
-  document.getElementById("radio1").checked = true;
-  document.getElementById("radio3").checked = true;
+  document.getElementById("importance").value = "Important";
+  document.getElementById("urgency").value = "Urgent";
 }
