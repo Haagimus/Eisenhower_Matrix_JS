@@ -15,7 +15,7 @@
 </head>
 
 <body onload="setup()">
-  <form class="form-inline">
+  <form class="form-inline form-padding">
     <div class="form-group">
       <!-- <label for="taskSummary">Create new task</label> -->
       <input type="text" class="form-control" id="task" placeholder="Task summary">
@@ -32,12 +32,12 @@
     <div class="form-group">
       <input type="button" class="btn btn-danger" id="reset" value="Reset" onclick="resetForm()">
     </div>
-    <div class="form-group">
+    <!-- <div class="form-group text-right">
       <input type="button" class="btn btn-primary" id="login" value="Login" onclick="login()">
     </div>
-    <div class="form-group">
+    <div class="form-group text-right">
       <input type="button" class="btn btn-success" id="register" value="Register" onclick="register()">
-    </div>
+    </div> -->
   </form>
 
   <div class="container-fluid">
@@ -45,28 +45,28 @@
     <div class="row">
       <!-- Important and Urgent -->
       <div class="col-xs-6 half-container" id="iu">
-        <h4 class="col-xs-12 text-center">Important/Urgent</h4>
-        <h5 class="col-xs-12 text-center">Do First: Low effort - High Gain</h5>
+        <p class="bg-text-lg">Important/Urgent</p>
+        <p class="bg-text-med">Do First: Low effort - High Gain</p>
       </div>
 
       <!-- Important and Not Urgent -->
       <div class="col-xs-6 half-container" id="in">
-          <h4 class="col-xs-12 text-center">Important/Not Urgent</h4>
-          <h5 class="col-xs-12 text-center">Plan: High effort - High gain</h5>
+        <p class="bg-text-lg">Important/Not Urgent</p>
+        <p class="bg-text-med">Plan: High effort - High gain</p>
       </div>
     </div>
 
     <div class="row">
       <!-- Not Important and Urgent -->
       <div class="col-xs-6 half-container" id="nu">
-        <h4 class="col-xs-12 text-center">Not Important/Urgent</h4>
-        <h5 class="col-xs-12 text-center">Delegate: Low effort - Low gain</h5>
+        <p class="bg-text-lg">Not Important/Urgent</p>
+        <p class="bg-text-med">Delegate: Low effort - Low gain</p>
       </div>
 
       <!-- Not Important and Not Urgent -->
       <div class="col-xs-6 half-container" id="nn">
-        <h4 class="col-xs-12 text-center">Not Important/Not Urgent</h4>
-        <h5 class="col-xs-12 text-center">Discard: High effort - Low gain</h5>
+        <p class="bg-text-lg">Not Important/Not Urgent</p>
+        <p class="bg-text-med">Discard: High effort - Low gain</p>
       </div>
     </div>
   </div>
