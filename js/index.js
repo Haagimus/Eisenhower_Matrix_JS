@@ -28,31 +28,31 @@ function addTask() {
   var radioU = document.getElementById("urgency").value;
   var grid;
 
+  //document.cookie = task=task;
+
   if (!task) {
     alert("A task summary is required to \r\nadd a new task to the matrix.");
   } else {
-    switch (true) {
-      case radioI == "Important" && radioU == "Urgent":
-        grid = "iu";
-        // console.log(task, radioI, radioU);
-        break;
-      case radioI == "Not Important" && radioU == "Urgent":
-        grid = "nu";
-        // console.log(task, radioI, radioU);
-        break;
-      case radioI == "Important" && radioU == "Not Urgent":
-        grid = "in";
-        // console.log(task, radioI, radioU);
-        break;
-      case radioI == "Not Important" && radioU == "Not Urgent":
-        grid = "nn";
-        // console.log(task, radioI, radioU);
-        break;
+    grid = checkGrid(radioI, radioU);
+  }
 
-      resetForm();
-      // var entry = document.createElement("li");
-      // entry.appendChild(document.createTextNode(task));
-    }
+  var entry = document.createElement("h5");
+  entry.innerHTML = task;
+  document.getElementById(grid).appendChild(entry);
+  //console.log(grid, entry);
+  resetForm();
+}
+
+function checkGrid(i, u) {
+  switch (true) {
+    case i == "Important" && u == "Urgent":
+      return "iu";
+    case i == "Not Important" && u == "Urgent":
+      return "nu";
+    case i == "Important" && u == "Not Urgent":
+      return "in";
+    case i == "Not Important" && u == "Not Urgent":
+      return "nn";
   }
 }
 
