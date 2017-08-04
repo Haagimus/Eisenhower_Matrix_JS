@@ -1,15 +1,30 @@
-html,
-body {
-  margin: 10px;
+html {
+  margin: 20px;
+  min-width: 550px;
+  min-height: 650px;
+}
+
+#task {
+  min-width: 240px;
 }
 
 #importance,
 #urgency {
-  width: 110px;
+    min-width: 120px;
+    margin-bottom: 15px;
+}
+
+#submit,
+#reset {
+  min-width: 70px;
+}
+
+.btn-group {
+  min-width: 240px;
 }
 
 .form-padding {
-  padding: 5px;
+  padding-bottom: 15px;
 }
 
 .bg-text-lg {
@@ -37,7 +52,10 @@ body {
   background-image: -o-linear-gradient(top, #FFE4E4, #FFA3A2);
   background-image: linear-gradient(to bottom, #FFE4E4, #FFA3A2);
   border: solid 2px #BE4B48;
-  height: 40vh;
+  height: 37.5vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  user-select: none;
 }
 
 #nu {
@@ -46,7 +64,10 @@ body {
   background-image: -o-linear-gradient(top, #E4EEFF, #A4C4FF);
   background-image: linear-gradient(to bottom, #E4EEFF, #A4C4FF);
   border: solid 2px #4A7EBB;
-  height: 40vh;
+  height: 37.5vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-user-select: none;
 }
 
 #in {
@@ -55,7 +76,10 @@ body {
   background-image: -o-linear-gradient(top, #F5FFE6, #DAFDA8);
   background-image: linear-gradient(to bottom, #F5FFE6, #DAFDA8);
   border: solid 2px #98B954;
-  height: 40vh;
+  height: 37.5vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  user-select: none;
 }
 
 #nn {
@@ -64,5 +88,8 @@ body {
   background-image: -o-linear-gradient(top, #EDEDED, #BDBDBD);
   background-image: linear-gradient(to bottom, #EDEDED, #BDBDBD);
   border: solid 2px #000;
-  height: 40vh;
+  height: 37.5vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  user-select: none;
 }
