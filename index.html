@@ -8,37 +8,39 @@
   <title>The Eisenhower Matrix (Method)</title>
 
   <script src="js/index.js"></script>
-  <!-- <script src="js/bootstrap.js"></script> -->
   <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="css/index.css">
 
 </head>
 
 <body onload="setup()">
-  <form class="form-inline form-padding">
-    <div class="form-group">
-      <!-- <label for="taskSummary">Create new task</label> -->
+  <div class="container">
+
+    <!-- task summary text box -->
+    <div class="col-sm-10 col-xs-9">
       <input type="text" class="form-control" id="task" placeholder="Task summary">
+
+      <!-- submit and reset buttons -->
+      <div class="btn-group">
+        <input type="button" class="btn btn-group btn-info" id="importance" value="Important" onclick="updateI()">
+        <input type="button" class="btn btn-group btn-info" id="urgency" value="Urgent" onclick="updateU()">
+      </div>
     </div>
-    <div class="form-group">
-      <input type="button" class="btn btn-info" id="importance" value="Important" onclick="updateI()">
+
+    <!-- importance and urgency buttons -->
+    <div class="col-sm-2 col-xs-3 btn-group-vertical">
+        <input type="button" class="btn btn-group btn-success" id="submit" value="Submit" onclick="addTask()">
+        <input type="button" class="btn btn-group btn-danger" id="reset" value="Reset" onclick="resetForm()">
     </div>
-    <div class="form-group">
-      <input type="button" class="btn btn-info" id="urgency" value="Urgent" onclick="updateU()">
-    </div>
-    <div class="form-group">
-      <input type="button" class="btn btn-success" id="submit" value="Submit" onclick="addTask()">
-    </div>
-    <div class="form-group">
-      <input type="button" class="btn btn-danger" id="reset" value="Reset" onclick="resetForm()">
-    </div>
+  </div>
+
     <!-- <div class="form-group text-right">
       <input type="button" class="btn btn-primary" id="login" value="Login" onclick="login()">
     </div>
     <div class="form-group text-right">
       <input type="button" class="btn btn-success" id="register" value="Register" onclick="register()">
     </div> -->
-  </form>
+  <!-- </form> -->
 
   <div class="container-fluid">
 
