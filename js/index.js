@@ -1,10 +1,28 @@
+var txtSize = "";
+
 function setup() {
+  // Reset the form after the page is loaded
   resetForm();
+  setText();
+}
+
+function setText() {
+  var cmbSize = document.getElementById("textSize");
+  txtSize = cmbSize.options[cmbSize.selectedIndex].value;
+
+  var tasks = document.getElementsByClassName("task");
+
+  for (var i=0; i < tasks.length; i++) {
+    var task = tasks[i];
+    task.style.fontSize = txtSize;
+  }
 }
 
 function updateI() {
   var i = document.getElementById("importance");
 
+  // Check the state of the importance button
+  // and sway the display on the button
   if (i.value == "Important") {
     i.value = "Not Important";
   } else {
@@ -15,6 +33,8 @@ function updateI() {
 function updateU() {
   var i = document.getElementById("urgency");
 
+  // Check the state of the urgency button
+  // and sway the display on the button
   if (i.value == "Urgent") {
     i.value = "Not Urgent";
   } else {
@@ -30,22 +50,43 @@ function addTask() {
 
   //document.cookie = task=task;
 
+  // Verify the task field has an entry otherwise alert
+  // the user that is a required field
   if (!task) {
     alert("A task summary is required to \r\nadd a new task to the matrix.");
     return;
   } else {
+    // Determing the grid square location based on
+    // the importance and urgency button selections
     grid = checkGrid(radioI, radioU);
   }
 
-  var entry = document.createElement("h5");
+  // Create the new task in the corresponding grid field
+  // and set its property to no-select
+  var entry = document.createElement("p");
   entry.innerHTML = task;
+<<<<<<< HEAD
+  enter.style.fontSize = txtSize;
   entry.className = "no-select";
+  entry.textDecorationLine = "none";
+=======
+  entry.className = "no-select";
+>>>>>>> origin/master
   document.getElementById(grid).appendChild(entry);
-  //console.log(grid, entry);
+  // entry.class += " task";
+
+  // Reset the form
   resetForm();
 }
 
+function getFocus() {
+  // Set focus to the task field
+  document.getElementById("task").focus();
+}
+
 function checkGrid(i, u) {
+  // Check the state of the importance and urgency
+  // buttons then return the correct grid id
   switch (true) {
     case i == "Important" && u == "Urgent":
       return "iu";
@@ -61,6 +102,19 @@ function checkGrid(i, u) {
 function strikeOut(e) {
   // e.target is the clicked element
   // if the item clicked was an h5 element
+<<<<<<< HEAD
+  if (e && e.class == "task") {
+
+    var isStruck = (e.style.textDecorationLine);
+
+    // If the item is already marked with line-through
+    // toggle it and vice versa
+    if (isStruck == "line-through") {
+      e.style.textDecorationLine = "none";
+      e.style.color = "black";
+    } else {
+      e.style.textDecorationLine = "line-through";
+=======
   if(e && e.localName == "h5") {
 
     var isStruck = (e.style.textDecorationLineThrough);
@@ -70,15 +124,42 @@ function strikeOut(e) {
       e.style.color = "black";
     } else {
       e.style.textDecorationLineThrough = true;
+>>>>>>> origin/master
       e.style.color = "grey";
     }
   }
 }
 
 function resetForm() {
+  // Reset all fields to their defaults then set focus to task
   document.getElementById("task").value = "";
   document.getElementById("importance").value = "Important";
   document.getElementById("urgency").value = "Urgent";
+  getFocus();
+}
+
+// All of the following monitor for double clicks on all
+// tasks that have been entered into the grid and then
+// line-through or remove line-through
+document.getElementById("iu").addEventListener("dblclick", function(e) {
+  strikeOut(e.target);
+});
+document.getElementById("in").addEventListener("dblclick", function(e) {
+  strikeOut(e.target);
+});
+document.getElementById("nu").addEventListener("dblclick", function(e) {
+  strikeOut(e.target);
+});
+document.getElementById("nn").addEventListener("dblclick", function(e) {
+  strikeOut(e.target);
+});
+
+// Handler to detect enter keypress on page and execute add task
+function handleEnter(e) {
+  var keycode = (e.keyCode ? e.keyCode : e.which);
+  if (keycode == '13') {
+    addTask();
+  }
 }
 
 document.getElementById("iu").addEventListener("dblclick", function(e) {
