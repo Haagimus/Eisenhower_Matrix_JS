@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 
@@ -8,32 +9,69 @@
   <title>The Eisenhower Matrix (Method)</title>
 
   <link rel="stylesheet" href="css/bootstrap.css">
+=======
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>The Eisenhower Matrix (Method)</title>
+
+  <link rel="stylesheet" href="css/bootstrap.css">
+>>>>>>> origin/master
   <link rel="stylesheet" href="css/index.css">
 
 </head>
 
-<body onload="setup()">
-  <div class="container">
+<body onload="setup()" onkeypress="handleEnter(event)">
 
-    <!-- task summary text box -->
-    <div class="col-sm-10 col-xs-9">
-      <input type="text" class="form-control" id="task" placeholder="Task summary">
+  <div class="container-fluid col-xs-10">
+    <div class="row">
+      <div class="col col-xs-2 text-right">
+        Text Size
+      </div>
+      <div class="col col-xs-10">
+        <input type="text" class="form-control" id="task" placeholder="Task summary">
+      </div>
+    </div>
 
-      <!-- submit and reset buttons -->
-      <div class="btn-group">
+    <div class="row">
+      <div class="col col-xs-2 text-right">
+        <select class="btn" id="textSize" onchange="setText()">
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option selected="selected" value="14">14</option>
+          <option value="16">16</option>
+          <option value="18">18</option>
+          <option value="20">20</option>
+          <option value="22">22</option>
+          <option value="24">25</option>
+          <option value="26">26</option>
+          <option value="28">28</option>
+        </select>
+      </div>
+
+      <!-- importance and urgency buttons -->
+      <div class="col btn-group col col-xs-10">
         <input type="button" class="btn btn-group btn-info" id="importance" value="Important" onclick="updateI()">
         <input type="button" class="btn btn-group btn-info" id="urgency" value="Urgent" onclick="updateU()">
       </div>
     </div>
-
-    <!-- importance and urgency buttons -->
-    <div class="col-sm-2 col-xs-3 btn-group-vertical">
-        <input type="button" class="btn btn-group btn-success" id="submit" value="Submit" onclick="addTask()">
-        <input type="button" class="btn btn-group btn-danger" id="reset" value="Reset" onclick="resetForm()">
-    </div>
   </div>
 
-    <!-- <div class="form-group text-right">
+  <!-- submit and clear buttons -->
+  <div class="col col-xs-2 btn-group-vertical">
+    <input type="button" class="btn btn-group btn-success" id="submit" value="Submit" onclick="addTask()">
+    <input type="button" class="btn btn-group btn-danger" id="clear" value="Clear Done" onclick="ClearDone()">
+  </div>
+
+  <!-- <div class="form-group text-right">
       <input type="button" class="btn btn-primary" id="login" value="Login" onclick="login()">
     </div>
     <div class="form-group text-right">
@@ -44,6 +82,47 @@
   <div class="container-fluid">
 
     <div class="row">
+      <!-- Important and Urgent -->
+      <div class="col col-xs-6 half-container" id="iu">
+        <p class="bg-text-lg no-select">Important/Urgent</p>
+        <p class="bg-text-med no-select">Do First: Low effort - High Gain</p>
+      </div>
+
+      <!-- Important and Not Urgent -->
+      <div class="col col-xs-6 half-container" id="in">
+        <p class="bg-text-lg no-select">Important/Not Urgent</p>
+        <p class="bg-text-med no-select">Plan: High effort - High gain</p>
+      </div>
+    </div>
+
+    <div class="row">
+<<<<<<< HEAD
+      <!-- Not Important and Urgent -->
+      <div class="col col-xs-6 half-container" id="nu">
+        <p class="bg-text-lg no-select">Not Important/Urgent</p>
+        <p class="bg-text-med no-select">Delegate: Low effort - Low gain</p>
+      </div>
+
+      <!-- Not Important and Not Urgent -->
+      <div class="col col-xs-6 half-container" id="nn">
+        <p class="bg-text-lg no-select">Not Important/Not Urgent</p>
+        <p class="bg-text-med no-select">Discard: High effort - Low gain</p>
+      </div>
+    </div>
+  </div>
+  <script src="js/index.js"></script>
+
+</body>
+<footer class="footer">
+  <div class="container">
+    <p class="text-muted" style="font-weight:bold">
+      &copy; Copyright <a href="mailto:haagimus@gmail.com">Gary Haag</a> 2017
+    </p>
+  </div>
+</footer>
+
+</html>
+=======
       <!-- Important and Urgent -->
       <div class="col-xs-6 half-container" id="iu">
         <p class="bg-text-lg no-select">Important/Urgent</p>
@@ -76,3 +155,4 @@
 </body>
 
 </html>
+>>>>>>> origin/master
