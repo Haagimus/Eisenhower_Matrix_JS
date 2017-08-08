@@ -1,7 +1,7 @@
 html {
   margin: 20px;
-  min-width: 550px;
-  min-height: 650px;
+  min-width: 825px;
+  min-height: 500px;
 }
 
 #task {
@@ -11,7 +11,7 @@ html {
 #importance,
 #urgency {
     min-width: 120px;
-    margin-bottom: 15px;
+    margin: 5px 0px;
 }
 
 #submit,
@@ -54,68 +54,86 @@ h5 {
 }
 
 .bg-text-lg {
-  position: absolute;
-  z-index: 0;
-  width: 100%;
-  top: 37.5%;
-  color: grey;
+  z-index: -1;
   font-size: 16px;
   text-align: center;
   font-weight: bold;
 }
-.bg-text-med {
+
+/*.bg-text-med {
   position: absolute;
-  z-index: 0;
+  z-index: -1;
   width: 100%;
   top: 52.5%;
   color: grey;
   font-size: 12px;
   text-align: center;
+}*/
+
+.hdiu {
+  background-color: MediumSeaGreen ;
+  height: 25px;
+  margin: -5px -5px 0px -5px;
 }
+
 #iu {
-  background-image: -moz-linear-gradient(top, #FFE4E4, #FFA3A2);
-  background-image: -webkit-linear-gradient(top, #FFE4E4, #FFA3A2);
-  background-image: -o-linear-gradient(top, #FFE4E4, #FFA3A2);
-  background-image: linear-gradient(to bottom, #FFE4E4, #FFA3A2);
-  border: solid 2px #BE4B48;
+  border: solid 2px MediumSeaGreen ;
   height: 37.5vh;
   overflow-y: auto;
   overflow-x: hidden;
   padding: 5px;
+  /*margin: 2px;*/
+  z-index: 0;
+  border-radius: 8px;
+}
+
+.hdnu {
+  background-color: cornflowerblue;
+  height: 25px;
+  margin: -5px -5px 0px -5px;
 }
 
 #nu {
-  background-image: -moz-linear-gradient(top, #E4EEFF, #A4C4FF);
-  background-image: -webkit-linear-gradient(top, #E4EEFF, #A4C4FF);
-  background-image: -o-linear-gradient(top, #E4EEFF, #A4C4FF);
-  background-image: linear-gradient(to bottom, #E4EEFF, #A4C4FF);
-  border: solid 2px #4A7EBB;
+  border: solid 2px cornflowerblue;
   height: 37.5vh;
   overflow-y: auto;
   overflow-x: hidden;
   padding: 5px;
+  /*margin: 2px;*/
+  z-index: 0;
+  border-radius: 8px;
+}
+
+.hdin {
+  background-color: orange;
+  height: 25px;
+  margin: -5px -5px 0px -5px;
 }
 
 #in {
-  background-image: -moz-linear-gradient(top, #F5FFE6, #DAFDA8);
-  background-image: -webkit-linear-gradient(top, #F5FFE6, #DAFDA8);
-  background-image: -o-linear-gradient(top, #F5FFE6, #DAFDA8);
-  background-image: linear-gradient(to bottom, #F5FFE6, #DAFDA8);
-  border: solid 2px #98B954;
+  border: solid 2px orange;
   height: 37.5vh;
   overflow-y: auto;
   overflow-x: hidden;
   padding: 5px;
+  /*margin: 2px;*/
+  z-index: 0;
+  border-radius: 8px;
+}
+
+.hdnn {
+  background-color: lightcoral;
+  height: 25px;
+  margin: -5px -5px 0px -5px;
 }
 
 #nn {
-  background-image: -moz-linear-gradient(top, #EDEDED, #BDBDBD);
-  background-image: -webkit-linear-gradient(top, #EDEDED, #BDBDBD);
-  background-image: -o-linear-gradient(top, #EDEDED, #BDBDBD);
-  background-image: linear-gradient(to bottom, #EDEDED, #BDBDBD);
-  border: solid 2px #000;
+  border: solid 2px lightcoral;
   height: 37.5vh;
   overflow-y: auto;
   overflow-x: hidden;
   padding: 5px;
+  /*margin: 2px;*/
+  z-index: 0;
+  border-radius: 8px;
 }
