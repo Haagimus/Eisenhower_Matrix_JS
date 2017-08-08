@@ -8,7 +8,7 @@ function setup() {
 
 function setText() {
   var cmbSize = document.getElementById("textSize");
-  txtSize = cmbSize.options[cmbSize.selectedIndex].value;
+  txtSize = cmbSize.options[cmbSize.selectedIndex].value + "px";
 
   var tasks = document.getElementsByClassName("task");
 
@@ -65,15 +65,11 @@ function addTask() {
   // and set its property to no-select
   var entry = document.createElement("p");
   entry.innerHTML = task;
-<<<<<<< HEAD
-  enter.style.fontSize = txtSize;
-  entry.className = "no-select";
-  entry.textDecorationLine = "none";
-=======
-  entry.className = "no-select";
->>>>>>> origin/master
+  entry.style.fontSize = txtSize;
+  entry.className = "no-select task";
+  entry.textDecoration = "none";
+  entry.style.zIndex = 1;
   document.getElementById(grid).appendChild(entry);
-  // entry.class += " task";
 
   // Reset the form
   resetForm();
@@ -102,32 +98,20 @@ function checkGrid(i, u) {
 function strikeOut(e) {
   // e.target is the clicked element
   // if the item clicked was an h5 element
-<<<<<<< HEAD
-  if (e && e.class == "task") {
+  if (e.className == "no-select task") {
 
-    var isStruck = (e.style.textDecorationLine);
+    var isStruck = (e.style.textDecoration);
 
     // If the item is already marked with line-through
     // toggle it and vice versa
     if (isStruck == "line-through") {
-      e.style.textDecorationLine = "none";
+      e.style.textDecoration = "none";
       e.style.color = "black";
     } else {
-      e.style.textDecorationLine = "line-through";
-=======
-  if(e && e.localName == "h5") {
-
-    var isStruck = (e.style.textDecorationLineThrough);
-
-    if (isStruck) {
-      e.style.textDecorationLineThrough = false;
-      e.style.color = "black";
-    } else {
-      e.style.textDecorationLineThrough = true;
->>>>>>> origin/master
+      e.style.textDecoration = "line-through";
       e.style.color = "grey";
-    }
-  }
+  	}
+	}
 }
 
 function resetForm() {
@@ -161,16 +145,3 @@ function handleEnter(e) {
     addTask();
   }
 }
-
-document.getElementById("iu").addEventListener("dblclick", function(e) {
-  strikeOut(e.target);
-});
-document.getElementById("in").addEventListener("dblclick", function(e) {
-  strikeOut(e.target);
-});
-document.getElementById("nu").addEventListener("dblclick", function(e) {
-  strikeOut(e.target);
-});
-document.getElementById("nn").addEventListener("dblclick", function(e) {
-  strikeOut(e.target);
-});
