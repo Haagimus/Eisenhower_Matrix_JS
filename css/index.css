@@ -8,15 +8,13 @@ html {
   min-width: 240px;
 }
 
-#importance,
-#urgency {
-    min-width: 120px;
-    margin: 5px 0px;
+#importance, #urgency {
+  min-width: 120px;
+  margin: 5px 0px;
 }
 
-#submit,
-#clear {
-  min-width: 80px;
+#submit {
+  min-width: 70px;
 }
 
 .no-select {
@@ -71,13 +69,13 @@ h5 {
 }*/
 
 .hdiu {
-  background-color: MediumSeaGreen ;
+  background-color: MediumSeaGreen;
   height: 25px;
   margin: -5px -5px 0px -5px;
 }
 
 #iu {
-  border: solid 2px MediumSeaGreen ;
+  border: solid 2px MediumSeaGreen;
   height: 37.5vh;
   overflow-y: auto;
   overflow-x: hidden;
@@ -136,4 +134,8 @@ h5 {
   /*margin: 2px;*/
   z-index: 0;
   border-radius: 8px;
+}
+
+.footer {
+  text-align: right;
 }
