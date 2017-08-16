@@ -1,9 +1,60 @@
 var txtSize = "";
+var taskCnt = 0;
+
+function getCookie(cname) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(";");
+  for (var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == " ") {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+function checkCnt() {
+  var tC = getCookie("taskCnt");
+  if (tC != "") {
+    taskCnt = tC;
+  } else {
+    taskCnt = 0;
+  }
+}
 
 function setup() {
   // Reset the form after the page is loaded
   resetForm();
-  setText();
+  ldText();
+  checkCnt();
+  // SQLConnect();
+}
+
+// function SQLConnect() {
+//   // Try and connect to the database
+//   connection = new mysqli("server","username", "password", "table");
+//
+//   // If connection was unsuccessful, handle the error
+//   if (connection === false) {
+//     alert("Database connection failed.");
+//   } else {
+//     alert("Database connection success!");
+//   }
+// }
+
+function ldText() {
+  var temp = getCookie("txtSize");
+  if(temp == "") {
+    txtSize = 14;
+  } else {
+    txtSize = temp;
+    document.getElementById("textSize").value = txtSize;
+    setText();
+  }
 }
 
 function setText() {
@@ -12,10 +63,12 @@ function setText() {
 
   var tasks = document.getElementsByClassName("task");
 
-  for (var i=0; i < tasks.length; i++) {
+  for (var i = 0; i < tasks.length; i++) {
     var task = tasks[i];
     task.style.fontSize = txtSize;
   }
+
+  document.cookie = "txtSize=" + txtSize.substring(0,2) + ";";
 }
 
 function updateI() {
@@ -47,8 +100,11 @@ function addTask() {
   var radioI = document.getElementById("importance").value;
   var radioU = document.getElementById("urgency").value;
   var grid;
+  var d = new Date();
+  var y = d.getFullYear() + 5;
 
-  //document.cookie = task=task;
+  taskCnt++;
+  document.cookie = "taskCnt=" + taskCnt + y + ";";
 
   // Verify the task field has an entry otherwise alert
   // the user that is a required field
@@ -99,8 +155,7 @@ function strikeOut(e) {
   // e.target is the clicked element
   // if the item clicked was an h5 element
   if (e.className == "no-select task") {
-
-    var isStruck = (e.style.textDecoration);
+    var isStruck = e.style.textDecoration;
 
     // If the item is already marked with line-through
     // toggle it and vice versa
@@ -110,8 +165,8 @@ function strikeOut(e) {
     } else {
       e.style.textDecoration = "line-through";
       e.style.color = "grey";
-  	}
-	}
+    }
+  }
 }
 
 function resetForm() {
@@ -119,7 +174,7 @@ function resetForm() {
   document.getElementById("task").value = "";
   document.getElementById("importance").value = "Important";
   document.getElementById("urgency").value = "Urgent";
-  getFocus();
+  // getFocus();
 }
 
 // All of the following monitor for double clicks on all
@@ -140,8 +195,8 @@ document.getElementById("nn").addEventListener("dblclick", function(e) {
 
 // Handler to detect enter keypress on page and execute add task
 function handleEnter(e) {
-  var keycode = (e.keyCode ? e.keyCode : e.which);
-  if (keycode == '13') {
+  var keycode = e.keyCode ? e.keyCode : e.which;
+  if (keycode == "13") {
     addTask();
   }
 }
