@@ -68,7 +68,11 @@ function setText() {
     task.style.fontSize = txtSize;
   }
 
-  document.cookie = "txtSize=" + txtSize.substring(0,2) + ";";
+  if(txtSize.length === 4) {
+    document.cookie = "txtSize=" + txtSize.substring(0, 2) + ";";
+  } else {
+    document.cookie = "txtSize=" + txtSize.substring(0, 1) + ";";
+  }
 }
 
 function updateI() {
