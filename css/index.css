@@ -1,20 +1,137 @@
 html {
   margin: 20px;
-  min-width: 825px;
+  min-width: 800px;
   min-height: 500px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  -webkit-animation-name: fadeIn; /* Fade in the background */
+  -webkit-animation-duration: 0.4s;
+  animation-name: fadeIn;
+  animation-duration: 0.4s;
+  /*border:solid 3px red;*/
+}
+
+/* Modal Content */
+.modal-content {
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: #fefefe;
+  width: 200px;
+  height: 100%;
+  -webkit-animation-name: slideIn;
+  -webkit-animation-duration: 0.5s;
+  animation-name: slideIn;
+  animation-duration: 0.5s;
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover, .close:focus {
+  color: #000;
+  float: right;
+  font-weight: bold;
+  font-size: 28px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+}
+
+.modal-body {
+  padding: 2px 16px;
+}
+
+/* Add Animation */
+@-webkit-keyframes slideIn {
+  from {
+    left: -300px;
+    opacity: 0;
+  }
+  to {
+    left: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    left: -300px;
+    opacity: 0;
+  }
+  to {
+    left: 0;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+#login,
+#register {
+  width: 150px;
+  margin: 0 5px;
+}
+
+.loginFields {
+  width: 185px;
+  margin: 5px;
+  border-radius: 5px;
+  padding-left: 5px;
 }
 
 #task {
   min-width: 240px;
+  z-index: 0;
 }
 
 #importance, #urgency {
   min-width: 120px;
-  margin: 5px 0px;
+  margin: 5px 0;
+  z-index: 0;
 }
 
 #submit {
   min-width: 70px;
+  z-index: 0;
 }
 
 .no-select {
@@ -27,20 +144,7 @@ html {
 }
 
 .task {
-  margin: 2px 0px;
-}
-
-.no-select {
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: default;
-}
-
-h5 {
-  margin: 2px 0px;
+  margin: 2px 0;
 }
 
 .btn-group {
@@ -51,91 +155,66 @@ h5 {
   padding-bottom: 15px;
 }
 
-.bg-text-lg {
-  z-index: -1;
-  font-size: 16px;
+.hdiu, .hdnu, .hdin, .hdnn {
+  height: 25px;
+  margin: -5px -5px 0 -5px;
   text-align: center;
   font-weight: bold;
+  font-size: 18px;
 }
 
-/*.bg-text-med {
-  position: absolute;
-  z-index: -1;
-  width: 100%;
-  top: 52.5%;
-  color: grey;
-  font-size: 12px;
-  text-align: center;
-}*/
-
-.hdiu {
-  background-color: MediumSeaGreen;
-  height: 25px;
-  margin: -5px -5px 0px -5px;
-}
-
-#iu {
-  border: solid 2px MediumSeaGreen;
+#iu, #nu, #in, #nn {
   height: 37.5vh;
   overflow-y: auto;
   overflow-x: hidden;
   padding: 5px;
-  /*margin: 2px;*/
-  z-index: 0;
   border-radius: 8px;
+  border: solid 3px;
+  margin: 2px;
+}
+.hdiu {
+  background-color: MediumSeaGreen;
+}
+#iu {
+  border-color: MediumSeaGreen;
 }
 
 .hdnu {
   background-color: cornflowerblue;
-  height: 25px;
-  margin: -5px -5px 0px -5px;
 }
 
 #nu {
-  border: solid 2px cornflowerblue;
-  height: 37.5vh;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding: 5px;
-  /*margin: 2px;*/
-  z-index: 0;
-  border-radius: 8px;
+  border-color: cornflowerblue;
 }
 
 .hdin {
   background-color: orange;
-  height: 25px;
-  margin: -5px -5px 0px -5px;
 }
 
 #in {
-  border: solid 2px orange;
-  height: 37.5vh;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding: 5px;
-  /*margin: 2px;*/
-  z-index: 0;
-  border-radius: 8px;
+  border-color: orange;
 }
 
 .hdnn {
   background-color: lightcoral;
-  height: 25px;
-  margin: -5px -5px 0px -5px;
 }
 
 #nn {
-  border: solid 2px lightcoral;
-  height: 37.5vh;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding: 5px;
-  /*margin: 2px;*/
-  z-index: 0;
-  border-radius: 8px;
+  border-color: lightcoral;
 }
 
 .footer {
   text-align: right;
 }
+
+/* for debugging layout */
+/* .container {
+  border: solid 2px black;
+} */
+/* .row {
+  border: solid 2px red;
+} */
+
+/* *[class^='col-'] {
+  border: solid 2px green;
+} */

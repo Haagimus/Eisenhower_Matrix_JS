@@ -1,6 +1,11 @@
 var txtSize = "";
 var taskCnt = 0;
 
+function resetCookies() {
+  document.cookie = "txtSize=14;"
+  ldText();
+}
+
 function getCookie(cname) {
   var name = cname + "=";
   var decodedCookie = decodeURIComponent(document.cookie);
@@ -10,7 +15,7 @@ function getCookie(cname) {
     while (c.charAt(0) == " ") {
       c = c.substring(1);
     }
-    if (c.indexOf(name) == 0) {
+    if (c.indexOf(name) === 0) {
       return c.substring(name.length, c.length);
     }
   }
@@ -19,7 +24,7 @@ function getCookie(cname) {
 
 function checkCnt() {
   var tC = getCookie("taskCnt");
-  if (tC != "") {
+  if (tC !== "") {
     taskCnt = tC;
   } else {
     taskCnt = 0;
@@ -34,21 +39,13 @@ function setup() {
   // SQLConnect();
 }
 
-// function SQLConnect() {
-//   // Try and connect to the database
-//   connection = new mysqli("server","username", "password", "table");
-//
-//   // If connection was unsuccessful, handle the error
-//   if (connection === false) {
-//     alert("Database connection failed.");
-//   } else {
-//     alert("Database connection success!");
-//   }
-// }
+function login() {
+
+}
 
 function ldText() {
   var temp = getCookie("txtSize");
-  if(temp == "") {
+  if (temp === "") {
     txtSize = 14;
   } else {
     txtSize = temp;
@@ -67,8 +64,7 @@ function setText() {
     var task = tasks[i];
     task.style.fontSize = txtSize;
   }
-
-  if(txtSize.length === 4) {
+  if(txtSize.length === 4) {
     document.cookie = "txtSize=" + txtSize.substring(0, 2) + ";";
   } else {
     document.cookie = "txtSize=" + txtSize.substring(0, 1) + ";";
@@ -152,7 +148,7 @@ function checkGrid(i, u) {
       return "in";
     case i == "Not Important" && u == "Not Urgent":
       return "nn";
-  }
+              }
 }
 
 function strikeOut(e) {
@@ -181,6 +177,32 @@ function resetForm() {
   // getFocus();
 }
 
+// Get the modal
+var modal = document.getElementById('settings');
+
+// Get the button that opens the modal
+var settings = document.getElementById("openSettings");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+settings.onclick = function() {
+    modal.style.display = "block";
+};
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+};
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+};
+
 // All of the following monitor for double clicks on all
 // tasks that have been entered into the grid and then
 // line-through or remove line-through
@@ -197,10 +219,14 @@ document.getElementById("nn").addEventListener("dblclick", function(e) {
   strikeOut(e.target);
 });
 
-// Handler to detect enter keypress on page and execute add task
+// Handler to detect enter keypress on page
 function handleEnter(e) {
   var keycode = e.keyCode ? e.keyCode : e.which;
-  if (keycode == "13") {
-    addTask();
+  if (keycode == 13) {
+    if (document.getElementById("settingsMenu").clientWidth === 0) {
+      addTask();
+    } else {
+      login();
+    }
   }
 }

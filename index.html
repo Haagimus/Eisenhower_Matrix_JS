@@ -1,73 +1,115 @@
 <!DOCTYPE html>
-<html>
-
+<html >
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>The Eisenhower Matrix (Method)</title>
-
-  <link rel="stylesheet" href="css/bootstrap.css">
+  <title>Eisenhower Matrix</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel='stylesheet prefetch' href='https://www.w3schools.com/w3css/4/w3.css'>
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+  <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
   <link rel="stylesheet" href="css/index.css">
 
 </head>
 
 <body onload="setup()" onkeypress="handleEnter(event)">
-  <!-- Task options -->
-  <div class="container-fluid col-xs-10">
-    <!-- Text size label and Task summary text box -->
-    <div class="row">
-      <div class="col col-xs-2 text-right">
-        Text Size
-      </div>
-      <div class="col col-xs-10">
-        <input type="text" class="form-control" id="task" placeholder="Task summary">
-      </div>
-    </div>
-    <!-- Text size, Importance and Urgency Buttons -->
-    <div class="row">
-      <div class="col col-xs-2 text-right">
-        <select class="btn" id="textSize" onchange="setText()">
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
-          <option value="11">11</option>
-          <option value="12">12</option>
-          <option value="13">13</option>
-          <option selected="selected" value="14">14</option>
-          <option value="16">16</option>
-          <option value="18">18</option>
-          <option value="20">20</option>
-          <option value="22">22</option>
-          <option value="24">24</option>
-          <option value="26">26</option>
-          <option value="28">28</option>
-        </select>
-      </div>
-      <div class="col btn-group col-xs-10">
-        <input type="button" class="btn btn-group btn-info" id="importance" value="Important" onclick="updateI()">
-        <input type="button" class="btn btn-group btn-info" id="urgency" value="Urgent" onclick="updateU()">
+  <!-- Settings sidebar menu -->
+  <div>
+    <!--Menu icon-->
+    <label id="openSettings">
+      <span class="glyphicon glyphicon-menu-hamburger"></span> MENU
+    </label>
+    <div id="settings" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content no-select" id="settingsMenu">
+        <div class="modal-header">
+          <span class="close">&times;</span>
+          <h2>Settings</h2>
+        </div>
+        <div class="modal-body">
+          <!--Text size drop down-->
+          <div class="row">
+            <div class="col-xs-6">Text Size</div>
+            <div class="col-xs-6 text-right">
+              <select class="btn" id="textSize" onchange="setText()">
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option selected="selected" value="14">14</option>
+                <option value="16">16</option>
+                <option value="18">18</option>
+                <option value="20">20</option>
+                <option value="22">22</option>
+                <option value="24">24</option>
+                <option value="26">26</option>
+                <option value="28">28</option>
+              </select>
+            </div>
+          </div>
+          <!--Reset all user settings-->
+          <input type="button" class="btn btn-warning" value="Reset" onclick="resetCookies()"/>
+          <div class="row">
+            <div class="text-center no-select">
+              <div class="input-group">
+                <!--Username input-->
+                <input type="text" id="username" class="loginFields" placeholder="Username"/>
+              </div>
+              <div class="input-group">
+                <!--Password input-->
+                <input type="password" id="password" class="loginFields" placeholder="Password"/>
+              </div>
+              <form action="login.php" method="post" enctype="multitype/form-data">
+                <input type="submit" id="login" class="btn btn-info" value="Log in"/>
+              </form>
+              <form action="register.php" method="post" enctype="multitype/form-data">
+                <input type="button" id="register" class="btn btn-info" value="Register"/>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <!-- submit button -->
-  <div class="col col-xs-1 btn-group-vertical">
-    <input type="button" class="btn btn-group btn-success" id="submit" value="Submit" onclick="addTask()">
-    <!-- <input type="button" class="btn btn-group btn-danger" id="clear" value="Clear Done" onclick="ClearDone()"> -->
+  
+  <!-- Task entry form -->
+  <div class="container col-xs-offset-1">
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="input-group">
+        <input type="text" class="form-control" id="task" placeholder="Task Summary">
+        <span class="input-group-btn">
+        <input type="button" class="btn btn-success" id="submit" value="Submit" onclick="addTask()">
+        </span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-6 btn-group">
+        <input type="button" class="btn btn-info" id="importance" value="Important" onclick="updateI()">
+        <input type="button" class="btn btn-info" id="urgency" value="Urgent" onclick="updateU()">
+      </div>
+    </div>
   </div>
+
   <!-- Task Matrix -->
-  <div class="container-fluid">
+  <div class="container col-xs-offset-1">
     <div class="row">
       <!-- Important and Urgent -->
-      <div class="col-xs-offset-1 col-xs-5" id="iu">
+      <div class="col-xs-5" id="iu">
         <div class="hdiu bg-text-lg no-select">DO: Important and Urgent</div>
       </div>
-
       <!-- Important and Not Urgent -->
       <div class="col-xs-5" id="in">
         <div class="hdin bg-text-lg no-select">PLAN: Important but Not Urgent</div>
       </div>
+    </div>
 
+    <div class="row">
       <!-- Not Important and Urgent -->
       <div class="col-xs-offset-1 col-xs-5" id="nu">
         <div class="hdnu bg-text-lg no-select">DELEGATE: Not Important but Urgent</div>
@@ -80,7 +122,7 @@
     </div>
   </div>
 
-
+  <hr>
   <footer class="footer">
     <div class="container">
       <p class="text-muted" style="font-weight:bold">
@@ -88,8 +130,15 @@
       </p>
     </div>
   </footer>
-  <script src="js/index.js"></script>
 
 </body>
 
+
+</html>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+
+    <script src="js/index.js"></script>
+
+</body>
 </html>
