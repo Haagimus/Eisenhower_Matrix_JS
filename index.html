@@ -1,144 +1,135 @@
 <!DOCTYPE html>
-<html >
+<html>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <title>Eisenhower Matrix</title>
-  
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel='stylesheet prefetch' href='https://www.w3schools.com/w3css/4/w3.css'>
   <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
   <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
   <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/grid.css">
 
 </head>
 
-<body onload="setup()" onkeypress="handleEnter(event)">
-  <!-- Settings sidebar menu -->
-  <div>
-    <!--Menu icon-->
-    <label id="openSettings">
-      <span class="glyphicon glyphicon-menu-hamburger"></span> MENU
-    </label>
-    <div id="settings" class="modal">
-      <!-- Modal content -->
-      <div class="modal-content no-select" id="settingsMenu">
-        <div class="modal-header">
-          <span class="close">&times;</span>
-          <h2>Settings</h2>
-        </div>
-        <div class="modal-body">
-          <!--Text size drop down-->
-          <div class="row">
-            <div class="col-xs-6">Text Size</div>
-            <div class="col-xs-6 text-right">
-              <select class="btn" id="textSize" onchange="setText()">
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-                <option value="13">13</option>
-                <option selected="selected" value="14">14</option>
-                <option value="16">16</option>
-                <option value="18">18</option>
-                <option value="20">20</option>
-                <option value="22">22</option>
-                <option value="24">24</option>
-                <option value="26">26</option>
-                <option value="28">28</option>
-              </select>
-            </div>
+<!-- <header>
+  <nav role="navigation">
+    <ul>
+      <li>
+        <a>
+          <div>
+            Settings
           </div>
-          <!--Reset all user settings-->
-          <input type="button" class="btn btn-warning" value="Reset" onclick="resetCookies()"/>
-          <div class="row">
-            <div class="text-center no-select">
-              <div class="input-group">
-                <!--Username input-->
-                <input type="text" id="username" class="loginFields" placeholder="Username"/>
-              </div>
-              <div class="input-group">
-                <!--Password input-->
-                <input type="password" id="password" class="loginFields" placeholder="Password"/>
-              </div>
+        </a>
+        <div>
+          <ul>
+            <li>Login to load personalized settings and tasks</li>
+            <li>
+
+            </li>
+            <li>
+              <button class="btn btn-warning" onclick="resetCookies()">Reset</button>
+            </li>
+            <li>
+              <input type="text" id="username" class="loginFields" placeholder="Username" />
+            </li>
+            <li>
+              <input type="password" id="password" class="loginFields" placeholder="Password" />
+            </li>
+            <li>
               <form action="login.php" method="post" enctype="multitype/form-data">
-                <input type="submit" id="login" class="btn btn-info" value="Log in"/>
+                <input type="submit" id="login" class="btn btn-info" value="Log in" />
               </form>
+            </li>
+            <li>
               <form action="register.php" method="post" enctype="multitype/form-data">
-                <input type="button" id="register" class="btn btn-info" value="Register"/>
+                <input type="button" id="register" class="btn btn-info" value="Register" />
               </form>
-            </div>
-          </div>
+            </li>
+          </ul>
         </div>
-      </div>
-    </div>
-  </div>
-  
+      </li>
+    </ul>
+  </nav>
+</header> -->
+
+<body onload="setup()" onkeypress="handleEnter(event)">
+
   <!-- Task entry form -->
-  <div class="container col-xs-offset-1">
-    <div class="row">
-      <div class="col-xs-6">
-        <div class="input-group">
-        <input type="text" class="form-control" id="task" placeholder="Task Summary">
-        <span class="input-group-btn">
-        <input type="button" class="btn btn-success" id="submit" value="Submit" onclick="addTask()">
-        </span>
-        </div>
+  <div class="flexChild columnParent" id="container">
+    <div class="flexChild rowParent" id="row-tasks-entry">
+      <input type="text" id="task" placeholder="Task Summary">
+      <button class="btn btn-success" id="submit" onclick="addTask()">Submit</button>
+      <button class="btn btn-info" id="importance" onclick="updateI()">Important</button>
+      <div class="btn-group">
+        <button class="btn btn-info" id="urgency" onclick="updateU()">Urgent</button>
+        <button class="btn btn-info" id="clear" onclick="clearFinished()">Clear Finished</button>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-6 btn-group">
-        <input type="button" class="btn btn-info" id="importance" value="Important" onclick="updateI()">
-        <input type="button" class="btn btn-info" id="urgency" value="Urgent" onclick="updateU()">
+      <div id="text-size">Text Size
+        <select id="textSize" onchange="setText()">
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option selected="selected" value="14">14</option>
+          <option value="16">16</option>
+          <option value="18">18</option>
+          <option value="20">20</option>
+          <option value="22">22</option>
+          <option value="24">24</option>
+          <option value="26">26</option>
+          <option value="28">28</option>
+        </select>
       </div>
     </div>
   </div>
-
-  <!-- Task Matrix -->
-  <div class="container-fluid col-xs-offset-1">
-    <div class="row">
-      <!-- Important and Urgent -->
-      <div class="col-xs-5" id="iu">
-        <div class="hdiu bg-text-lg no-select">DO: Important and Urgent</div>
+  <div class="flexChild rowParent" id="row-tasks-grid">
+    <div class="flexChild columnParent" id="column-tasks-left">
+      <div class="flexChild taskBox">
+        <div class="title iu">DO: Important and Urgent</div>
+        <div class="tasks" id="iu"></div>
       </div>
-      <!-- Important and Not Urgent -->
-      <div class="col-xs-5" id="in">
-        <div class="hdin bg-text-lg no-select">PLAN: Important but Not Urgent</div>
+      <div class="flexChild taskBox">
+        <div class="title nu">DELEGATE: Not Important but Urgent</div>
+        <div class="tasks" id="nu"></div>
       </div>
     </div>
-
-    <div class="row">
-      <!-- Not Important and Urgent -->
-      <div class="col-xs-5" id="nu">
-        <div class="hdnu bg-text-lg no-select">DELEGATE: Not Important but Urgent</div>
+    <div class="flexChild columnParent" id="column-tasks-right">
+      <div class="flexChild taskBox">
+        <div class="title in">PLAN: Important but Not Urgent</div>
+        <div class="tasks" id="in"></div>
       </div>
-
-      <!-- Not Important and Not Urgent -->
-      <div class="col-xs-5" id="nn">
-        <div class="hdnn bg-text-lg no-select">ELIMINATE: Not Important and Not Urgent</div>
+      <div class="flexChild taskBox">
+        <div class="title nn">ELIMINATE: Not Important and Not Urgent</div>
+        <div class="tasks" id="nn"></div>
       </div>
     </div>
   </div>
 
   <hr>
   <footer class="footer">
-    <div class="container">
-      <p class="text-muted" style="font-weight:bold">
-        &copy; Copyright <a href="mailto:haagimus@gmail.com?Subject=Task%20Matrix">Gary Haag</a> 2017
-      </p>
-    </div>
+    <!-- <div class="container"> -->
+    <p class="text-muted" style="font-weight:bold">
+      &copy; Copyright
+      <a href="mailto:haagimus@gmail.com?Subject=Task%20Matrix">Gary Haag</a> 2017
+    </p>
+    <!-- </div> -->
   </footer>
 
 </body>
 
 
 </html>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 
-    <script src="js/index.js"></script>
+<script src="js/index.js"></script>
 
 </body>
+
 </html>
