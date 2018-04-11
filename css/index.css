@@ -1,109 +1,97 @@
-html {
-  margin: 20px;
-  min-width: 800px;
-  min-height: 500px;
+header {
+  background: linear-gradient(to left,rgba(54,194,182,0.96) 0,rgba(62,188,207,0.96) 100%);
+  border-bottom: 1px solid rgba(0,0,0,.1);
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+  display: block;
+  width: 100%;
+  z-index: 1000;
 }
 
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
-  -webkit-animation-name: fadeIn; /* Fade in the background */
-  -webkit-animation-duration: 0.4s;
-  animation-name: fadeIn;
-  animation-duration: 0.4s;
-  /*border:solid 3px red;*/
+header > nav > ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-/* Modal Content */
-.modal-content {
-  position: fixed;
-  left: 0;
-  top: 0;
-  background-color: #fefefe;
-  width: 200px;
-  height: 100%;
-  -webkit-animation-name: slideIn;
-  -webkit-animation-duration: 0.5s;
-  animation-name: slideIn;
-  animation-duration: 0.5s;
+header > nav > ul > li {
+  flex: 0 1 auto;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  transition: all linear 0.1s;	
 }
 
-/* The Close Button */
-.close {
-  color: white;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+header > nav > ul > li:hover {
+  background: rgba(58,162,173,1);
 }
 
-.close:hover, .close:focus {
-  color: #000;
-  float: right;
-  font-weight: bold;
-  font-size: 28px;
+header > nav > ul > li a + div {
+  background: linear-gradient(to bottom,rgba(58,162,173,1) 0,rgba(62,188,207,0.96) 100%);;
+  border-radius: 0 0 2px 2px;
+  box-shadow: 0 3px 1px rgba(0,0,0,.05);
+  display: none;
+  font-size: 1rem;
+  position: absolute;
+  width: auto;
+}
+
+header > nav > ul > li:hover a + div {
+  display: block;
+}
+
+header > nav > ul > li a + div > ul {
+  list-style-type: none;	
+}
+
+header > nav > ul > li a + div > ul > li {
+  margin: 0;
+  padding: 0;
+}
+
+header > nav > ul > li a + div > ul > li > a {
+  color: rgba(255,255,255,.9);
+  display: block;	
+  font-size: .75rem;
+  letter-spacing: 1.5px;
+  padding: .25rem 1.5rem;
   text-decoration: none;
-  cursor: pointer;
+  text-transform: uppercase;
+}
+  
+header > nav > ul > li > a {
+align-items: flex-end;
+color: #fff;
+display: flex;
+font-size: 1.55rem;
+font-weight: 200;
+letter-spacing: 1px;
+max-width: 130px;
+padding: 1rem 1.5rem;
+text-decoration: none;
+text-shadow: 0 1px 1px rgba(0,0,0,.1);
+transition: all linear 0.1s;
 }
 
-.modal-header {
-  padding: 2px 16px;
-  background-color: #5cb85c;
-  color: white;
+header > nav > ul > li > a > div > span {
+  color: rgba(255,255,255,.75);
+  display: block;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: .7rem;	
+  font-style: italic;
+  line-height: 1rem;
+  max-width: 260px;
 }
 
-.modal-body {
-  padding: 2px 16px;
-}
-
-/* Add Animation */
-@-webkit-keyframes slideIn {
-  from {
-    left: -300px;
-    opacity: 0;
-  }
-  to {
-    left: 0;
-    opacity: 1;
-  }
-}
-
-@keyframes slideIn {
-  from {
-    left: -300px;
-    opacity: 0;
-  }
-  to {
-    left: 0;
-    opacity: 1;
-  }
-}
-
-@-webkit-keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
+/* 
+@media (min-width: 990px) {
+header > nav > ul > li > a {
+max-width: 500px;
+font-size: 1.7rem;
+line-height: 2rem;
+} */
 
 #login,
 #register {
@@ -119,19 +107,26 @@ html {
 }
 
 #task {
-  min-width: 240px;
-  z-index: 0;
+  border-radius: 4px;
+  margin: 4px;
 }
 
-#importance, #urgency {
+#importance, #urgency, #clear {
   min-width: 120px;
-  margin: 5px 0;
-  z-index: 0;
 }
 
 #submit {
   min-width: 70px;
-  z-index: 0;
+}
+
+#text-size {
+  display: inline-block;
+  margin: 5px;
+  font-size: 14px;
+  line-height: 1.4285;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
 }
 
 .no-select {
@@ -147,74 +142,42 @@ html {
   margin: 2px 0;
 }
 
-.btn-group {
-  min-width: 240px;
-}
-
-.form-padding {
-  padding-bottom: 15px;
-}
-
-.hdiu, .hdnu, .hdin, .hdnn {
-  height: 25px;
-  margin: -5px -5px 0 -5px;
+.btn {
+  display: inline-block;
+  margin: 5px;
+  font-size: 14px;
+  line-height: 1.4285;
   text-align: center;
-  font-weight: bold;
-  font-size: 18px;
+  white-space: nowrap;
+  vertical-align: middle;
+  border: solid 1px transparent;
+  border-radius: 4px;
 }
 
-#iu, #nu, #in, #nn {
-  height: 37.5vh;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding: 5px;
-  border-radius: 8px;
-  border: solid 3px;
-  margin: 2px;
-}
-.hdiu {
-  background-color: MediumSeaGreen;
-}
-#iu {
-  border-color: MediumSeaGreen;
+.btn-group button{
+  padding: 10px, 24px;
+  float: left;
 }
 
-.hdnu {
-  background-color: cornflowerblue;
+.btn-group button:not(:last-child) {
+  border-right: none;
 }
 
-#nu {
-  border-color: cornflowerblue;
+.btn-success {
+  background-color: #449d44;
+  color: white;
 }
 
-.hdin {
-  background-color: orange;
+.btn-info {
+  background-color: #31b0d5;
+  color: white;
 }
 
-#in {
-  border-color: orange;
-}
-
-.hdnn {
-  background-color: lightcoral;
-}
-
-#nn {
-  border-color: lightcoral;
+.btn-warning {
+  background-color: firebrick;
+  color: white;
 }
 
 .footer {
   text-align: right;
 }
-
-/* for debugging layout */
-/* .container {
-  border: solid 2px black;
-} */
-/* .row {
-  border: solid 2px red;
-} */
-
-/* *[class^='col-'] {
-  border: solid 2px green;
-} */
