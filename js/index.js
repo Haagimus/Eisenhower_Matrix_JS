@@ -7,6 +7,32 @@ function setup() {
   getTextSizeCookie();
   //getTasksCookie();
   getTaskCountCookie();
+  setupIDDB();
+}
+
+function setupIDDB() {
+  // In the following line, you should include the prefixes of implementations you want to test.
+  window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+  // DON'T use "var indexedDB = ..." if you're not in a function.
+  // Moreover, you may need references to some window.IDB* objects:
+  window.IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction || { READ_WRITE: "readwrite" }; // This line should only be needed if it is needed to support the object's constants for older browsers
+  window.IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange;
+  // (Mozilla has never prefixed these objects, so we don't need window.mozIDB*)
+
+  if (!window.indexedDB) {
+    alert("Your browser doesn't support a stable version of IndexedDB.");
+  }
+}
+
+function Task(task, importance, urgency) {
+  this.T = task;
+  this.I = importance;
+  this.U = urgency;
+}
+
+function taskCookie(name, value)
+{
+  var cookie = [name, '=', JSON.stringify(value),]
 }
 
 function resetCookies() {
@@ -60,7 +86,7 @@ function setTextCookie() {
     var task = tasks[i];
     task.style.fontSize = txtSize;
   }
-  if(txtSize.length === 4) {
+  if (txtSize.length === 4) {
     document.cookie = "txtSize=" + txtSize.substring(0, 2) + ";";
   } else {
     document.cookie = "txtSize=" + txtSize.substring(0, 1) + ";";
@@ -92,37 +118,35 @@ function updateU() {
 }
 
 function addTask() {
-  var task = document.getElementById("task").value;
-  var radioI = document.getElementById("importance").innerText;
-  var radioU = document.getElementById("urgency").innerText;
-  var grid;
-  // var d = new Date();
-  // var y = d.getFullYear() + 5;
+  var task = new Task(document.getElementById("task").value,
+   document.getElementById("importance").innerText,
+   document.getElementById("urgency").innerText);
 
-  taskCnt++;
-  document.cookie = "taskCnt=" + taskCnt + ";";
-
-  // Verify the task field has an entry otherwise alert
+    // Verify the task field has an entry otherwise alert
   // the user that is a required field
-  if (!task) {
+  if (!task.T) {
     alert("A task summary is required to \r\nadd a new task to the matrix.");
     return;
   }
+  
   // Determing the grid square location based on
   // the importance and urgency button selections
-  grid = checkGrid(radioI, radioU);
+  var grid = checkGrid(task.I, task.U); 
+  // var d = new Date();
+  // var y = d.getFullYear() + 5;
 
   // Create the new task in the corresponding grid field
   // and set its property to no-select
   var entry = document.createElement("p");
-  entry.innerHTML = task;
+  entry.innerHTML = task.T;
   entry.style.fontSize = txtSize;
   entry.id = "";
   entry.className = "no-select task";
   entry.textDecoration = "none";
   entry.style.zIndex = 1;
+
   document.getElementById(grid).appendChild(entry);
-  document.cookie = grid + ":" + entry.innerHTML + ":" + entry.id;
+  document.cookie = JSON.stringify(task);
 
   // Reset the form
   resetForm();
@@ -140,7 +164,7 @@ function checkGrid(i, u) {
       return "in";
     case i === "Not Important" && u === "Not Urgent":
       return "nn";
-              }
+  }
 }
 
 function strikeOut(e) {
@@ -166,7 +190,7 @@ function strikeOut(e) {
 function clearFinished() {
 
   var complete = $('[id="complete"]');
-  var total = complete.length;  
+  var total = complete.length;
   complete.remove();
 
   taskCnt = taskCnt - total;
@@ -184,16 +208,16 @@ function resetForm() {
 // All of the following monitor for double clicks on all
 // tasks that have been entered into the grid and then
 // line-through or remove line-through
-document.getElementById("iu").addEventListener("dblclick", function(e) {
+document.getElementById("iu").addEventListener("dblclick", function (e) {
   strikeOut(e.target);
 });
-document.getElementById("in").addEventListener("dblclick", function(e) {
+document.getElementById("in").addEventListener("dblclick", function (e) {
   strikeOut(e.target);
 });
-document.getElementById("nu").addEventListener("dblclick", function(e) {
+document.getElementById("nu").addEventListener("dblclick", function (e) {
   strikeOut(e.target);
 });
-document.getElementById("nn").addEventListener("dblclick", function(e) {
+document.getElementById("nn").addEventListener("dblclick", function (e) {
   strikeOut(e.target);
 });
 
